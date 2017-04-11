@@ -31,23 +31,15 @@ public class Menu extends HttpServlet
 "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n" +
 "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\">\n" +
 "        <title>Menú | Lienzo Urbano</title>\n" +
-"        <!-- Google fonts -->\n" +
 "        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>\n" +
-"        <!-- font awesome -->\n" +
 "        <link href=\"//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css\" rel=\"stylesheet\">\n" +
-"        <!-- bootstrap -->\n" +
 "        <link rel=\"stylesheet\" href=\"assets/bootstrap/css/bootstrap.min.css\" />\n" +
-"        <!-- animate.css -->\n" +
 "        <link rel=\"stylesheet\" href=\"assets/animate/animate.css\" />\n" +
 "        <link rel=\"stylesheet\" href=\"assets/animate/set.css\" />\n" +
-"        <!-- gallery -->\n" +
 "        <link rel=\"stylesheet\" href=\"assets/gallery/blueimp-gallery.min.css\">\n" +
-"        <!-- favicon -->\n" +
 "        <link rel=\"shortcut icon\" href=\"images/favicon.ico\" type=\"image/x-icon\">\n" +
 "        <link rel=\"icon\" href=\"images/favicon.ico\" type=\"image/x-icon\">\n" +
-"        <link rel=\"stylesheet\" href=\"assets/style.css\">\n" +
-"        <link rel=\"stylesheet\" href=\"assets/bootstrap/css/bootstrap.css\" type=\"text/css\"/>\n" +
-"\n" +
+"        <link rel=\"stylesheet\" href=\"assets/style.css\">"+
 "        <script src=\"js/validacion.js\" language=\"javascript\" type=\"text/javascript\"></script>\n" +
 "        <script src=\"https://cdn.jsdelivr.net/sweetalert2/5.3.2/sweetalert2.min.js\"></script>\n" +
 "        <script src=\"https://cdn.jsdelivr.net/sweetalert2/5.3.2/sweetalert2.js\"></script>\n" +
