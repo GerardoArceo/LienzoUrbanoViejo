@@ -104,17 +104,17 @@ try {
             <p class="lead">Para poder comentar, puntuar, compartir tu arte y ponerte en contacto con más artistas, inicia sesión <i class="fa fa-smile-o"></i></p><br><br>
             <form action="InicioSesion" method="POST" name="formu">
                 <label>Usuario</label>
-                <input type="text" class="form-control" style="background-color: #FFE4E1;" name="usuario" placeholder="Usuario" size="20">
+                <input type="text" class="form-control" name="usuario" placeholder="Usuario" size="20">
                 <br><br><br><br>
                 <label>Contraseña</label>
-                <input type="password" class="form-control" style="background-color: #FFE4E1;" name="pass" placeholder="Contraseña" size="20">
+                <input type="password" class="form-control" name="pass" placeholder="Contraseña" size="20">
                 <br><br><br><br>
-                <button type="button" class="btn btn-primary btn-lg" onclick="validacionIS()" style="background-color: #DC143C">Iniciar Sesión</button>
+                <button type="button" class="btn btn-primary btn-lg" onclick="validacionIS()">Iniciar Sesión</button>
             </form>
             <br><br><br><hr><br><br><br>
             <div class="bg-info">
                 <h3>¿No tienes cuenta?</h3><br>
-                <strong><a class="btn btn-primary btn-lg" title="Registro" href="registro.jsp">Regístrate</a></strong>   
+                <strong><a class="btn btn-primary btn-lg" title="Registro" href="registro.jsp" style="background-color: #DC143C">Regístrate</a></strong>   
             </div>
             <br>
         </div>

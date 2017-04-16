@@ -145,77 +145,77 @@ try {
                 <h1>Tus sueños son nuestro lienzo...</h1>
             </div>
             <div class=" clearfix grid"> 
-                <figure class="effect-oscar  wowload fadeInUp">
+                <figure class="effect-oscar  wowload fadeInUp" onclick="verCategoria(1);">
                     <img src="images/categorias/paisaje.jpg" alt="Paisajes"/>
                     <figcaption>
                         <h2>Paisajes</h2>
                         <p><br>
-                            <a href="images/categorias/paisaje.jpg" onclick="verCategoria(1);" title="Paisajes" data-gallery>Ver Categoría</a></p>            
+                            <a title="Paisajes" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
-                <figure class="effect-oscar  wowload fadeInUp">
+                <figure class="effect-oscar  wowload fadeInUp" onclick="verCategoria(2);">
                     <img src="images/categorias/abstracto.jpg" alt="Abstracto"/>
                     <figcaption>
                         <h2>Abstracto</h2>
                         <p><br>
-                            <a href="images/categorias/abstracto.jpg" onclick="verCategoria(2);" title="Abstracto" data-gallery>Ver Categoría</a></p>            
+                            <a title="Abstracto" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
-                <figure class="effect-oscar  wowload fadeInUp">
+                <figure class="effect-oscar  wowload fadeInUp" onclick="verCategoria(3);">
                     <img src="images/categorias/minimalista.jpg" alt="Minimalista"/>
                     <figcaption>
                         <h2>Minimalismo</h2>
                         <p><br>
-                            <a href="images/categorias/minimalista.jpg" onclick="verCategoria(3);" title="Minimalismo" data-gallery>Ver Categoría</a></p>            
+                            <a title="Minimalismo" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
-                <figure class="effect-oscar  wowload fadeInUp">
+                <figure class="effect-oscar  wowload fadeInUp" onclick="verCategoria(4);">
                     <img src="images/categorias/caricatura.jpg" alt="Caricatura"/>
                     <figcaption>
                         <h2>Caricaturas</h2>
                         <p><br>
-                            <a href="images/categorias/caricatura.jpg" onclick="verCategoria(4);" title="Caricaturas" data-gallery>Ver Categoría</a></p>            
+                            <a title="Caricaturas" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
-                <figure class="effect-oscar  wowload fadeInUp">
+                <figure class="effect-oscar  wowload fadeInUp" onclick="verCategoria(5);">
                     <img src="images/categorias/realista.jpg" alt="Realista"/>
                     <figcaption>
                         <h2>Realismo</h2>
                         <p><br>
-                            <a href="images/categorias/realista.jpg" onclick="verCategoria(5);" title="Realismo" data-gallery>Ver Categoría</a></p>            
+                            <a title="Realismo" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
 
-                <figure class="effect-oscar  wowload fadeInUp">
+                <figure class="effect-oscar  wowload fadeInUp" onclick="verCategoria(6);">
                     <img src="images/categorias/poesia.jpg" alt="Acción Poética"/>
                     <figcaption>
                         <h2>Acción Poética</h2>
                         <p><br>
-                            <a href="images/categorias/poesia.jpg" onclick="verCategoria(6);" title="Acción Poética" data-gallery>Ver Categoría</a></p>            
+                            <a title="Acción Poética" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
-                <figure class="effect-oscar  wowload fadeInUp">
+                <figure class="effect-oscar  wowload fadeInUp" onclick="verCategoria(7);">
                     <img src="images/categorias/3d.jpg" alt="3D"/>
                     <figcaption>
                         <h2>3D</h2>
                         <p><br>
-                            <a href="images/categorias/3d.jpg" onclick="verCategoria(7);" title="3D" data-gallery>Ver Categoría</a></p>            
+                            <a title="3D" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
-                <figure class="effect-oscar  wowload fadeInUp">
+                <figure class="effect-oscar  wowload fadeInUp" onclick="verCategoria(8);">
                     <img src="images/categorias/vida.jpeg" alt="Vida"/>
                     <figcaption>
                         <h2>Fauna</h2>
                         <p><br>
-                            <a href="images/categorias/vida.jpeg" onclick="verCategoria(8);" title="Fauna" data-gallery>Ver Categoría</a></p>            
+                            <a title="Fauna" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
-                <figure class="effect-oscar  wowload fadeInUp">
+                <figure class="effect-oscar  wowload fadeInUp" onclick="verCategoria(9);">
                     <img src="images/categorias/humor.jpg" alt="Humor"/>
                     <figcaption>
                         <h2>Humor</h2>
                         <p><br>
-                            <a href="images/categorias/humor.jpg" onclick="verCategoria(9);" title="Humor" data-gallery>Ver Categoría</a></p>            
+                            <a title="Humor" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
             </div>

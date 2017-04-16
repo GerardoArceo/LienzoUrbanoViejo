@@ -50,6 +50,60 @@
         <script src="https://cdn.jsdelivr.net/sweetalert2/5.3.2/sweetalert2.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/5.3.2/sweetalert2.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/5.3.2/sweetalert2.css">
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script language="javascript" type="text/javascript">
+            function cambiarLike(likes){
+              document.getElementById('Jlike').innerHTML = "<h1><i class=\"fa fa-thumbs-o-up\"></i><br>"+likes+"</h1>";
+            }
+            function cambiarDislike(dislikes){
+              document.getElementById('Jdislike').innerHTML = "<h1><i class=\"fa fa-thumbs-o-down\"></i><br>"+dislikes+"</h1>";
+            }
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#like').click(function(event) {
+                    var _idPersona = $('#idPersona').val();
+                    var _idArte = $('#idArte').val();
+                    // Si en vez de por post lo queremos hacer por get, cambiamos el $.post por $.get
+                    $.post('ActionServlet', {
+                        idPersona : _idPersona,
+                        idArte : _idArte,
+                        peticion : 'like'
+                    }, function(responseText) {
+                        $('#Jlike').html(responseText);
+                    });
+                });
+            });
+            $(document).ready(function() {
+                $('#dislike').click(function(event) {
+                    var _idPersona = $('#idPersona').val();
+                    var _idArte = $('#idArte').val();
+                    // Si en vez de por post lo queremos hacer por get, cambiamos el $.post por $.get
+                    $.post('ActionServlet', {
+                        idPersona : _idPersona,
+                        idArte : _idArte,
+                        peticion : 'dislike'
+                    }, function(responseText) {
+                        $('#Jdislike').html(responseText);
+                    });
+                });
+            });
+            $(document).ready(function() {
+                $('#fav').click(function(event) {
+                    var _idPersona = $('#idPersona').val();
+                    var _idArte = $('#idArte').val();
+                    // Si en vez de por post lo queremos hacer por get, cambiamos el $.post por $.get
+                    $.post('ActionServlet', {
+                        idPersona : _idPersona,
+                        idArte : _idArte,
+                        peticion : 'fav'
+                    }, function(responseText) {
+                        $('#Jfav').html(responseText);
+                    });
+                });
+            });
+        </script>
+
     </head>
     <body>
         <div class="topbar animated fadeInLeftBig"></div>
@@ -147,12 +201,49 @@
 
             <table>
                 <tr>
-                    <td><h2><i class="fa fa-thumbs-up"></i></h2></td>
-                    <td><h2><i class="fa fa-star"></i></h2></td>
-                    <td><h2><i class="fa fa-thumbs-down"></i></h2></td>
+                    <td id="like">
+                        <div id="Jlike">
+                            <h1>
+                                <%if(Funcion.existeLike(idArte, id) == true){%>
+                                    <i class="fa fa-thumbs-up"></i>
+                                <%}else{%>
+                                    <i class="fa fa-thumbs-o-up"></i>
+                                <%}%>
+                            <br><%=likes[0]%>
+                            </h1>
+                        </div>
+                    </td>
+                    <td id="fav">
+                        <div id="Jfav">
+                            <h1>
+                                <%if(Funcion.existeFav(idArte, id) == true){%>
+                                    <i class="fa fa-star"></i>
+                                <%}else{%>
+                                    <i class="fa fa-star-o"></i>
+                                <%}%>
+                            </h1>
+                        </div>
+                    </td>
+                    <td id="dislike">
+                        <div id="Jdislike">
+                            <h1>
+                                <%if(Funcion.existeDislike(idArte, id) == true){%>
+                                    <i class="fa fa-thumbs-down"></i>
+                                <%}else{%>
+                                    <i class="fa fa-thumbs-o-down"></i>
+                                <%}%>
+                            <br><%=likes[1]%>
+                            </h1>
+                        </div>
+                    </td>
                 </tr>
             </table>
 
+            <form>
+                <input type="hidden" id="idPersona" value="<%=id%>"/>
+                <input type="hidden" id="idArte" value="<%=idArte%>"/>
+            </form>
+            
             <br><br>
 
             <form action="categoria.jsp" method="post">

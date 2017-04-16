@@ -78,15 +78,11 @@ footer
 }
 
 table { margin: 0 auto; font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-    text-align: center; border-collapse: collapse; }
+    text-align: center; border-radius: 15px;}
 
-th {     text-align: center; font-size: large; font-weight: bolder;     padding: 8px;     background: #DC143C; color:#FFFAFA;
-border-bottom: 2px solid #DC143C; border-top: 2px solid #DC143C; border-left: 2px solid #FFFAFA; border-right: 2px solid #FFFAFA;}
+th {border-radius: 15px; text-align: center; font-size: large; font-weight: bolder;     padding: 8px;     background: #3498DB; color:#FFFAFA;}
 
-td {    text-align: center;  padding: 8px;     background: #e8edff;     color: #000000;  font-weight: bold;
-        border-bottom: 2px solid #191970; border-top: 2px solid #191970; border-left: 2px solid #191970; border-right: 2px solid #191970;}
-
-tr:hover td { background: #d0dafd; color: #339; }
+td {border-radius: 15px; text-align: center;  padding: 8px;     background: #e8edff;     color: #000000;  font-weight: bold;}
 
 a{color:#00a9c6; text-decoration:none;}
 a:hover{color:#666;}
@@ -162,7 +158,7 @@ p{font-size:1em;line-height: 1.7em; margin-bottom: 1.7em;}
 .team img{width: 100%;}
 .team b{font-size: 1.2em;display: block;}
 .team a i.fa{color: #fff; font-size: 2em;}
-.team a i.fa:hover{color: #21abca;}
+.team a i.fa:hover{color: #DC143C;}
 
 
 .highlight-info{ background:url(../images/lab.jpg) center fixed; background-size: cover; color:#fff;}

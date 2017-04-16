@@ -139,26 +139,27 @@ estados.add(Funcion.verEstados(2));
         <%if(nombre==null){%>               
         
         <div class="contenido" id="up">
-            <div class="text-center">
+            <div class="text-center container">
                 <br><br><br><br>
-                <h2>Únete a Lienzo Urbano!!!</h2><br>
-                <p class="lead">Para ser parte de la comunidad solo tienes que llenar el siguiente formulario <i class="fa fa-smile-o"></i></p><br><br>
+                <h1>Únete a Lienzo Urbano!!!</h1><br>
+                <h3>Para ser parte de la comunidad solo tienes que llenar el siguiente formulario <i class="fa fa-smile-o"></i></h3><br><br>
+                
                 <form action="Registro" method="POST" name="formu" enctype="multipart/form-data">
                     <div class="container">
                         <label>Nombre</label>
-                        <input type="text" class="form-control" style="background-color: #FFE4E1;" name="nombre" placeholder="Nombre" size="30">
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" size="30">
                         <br>
                         <label>Apellido Paterno</label>
-                        <input type="text" class="form-control" style="background-color: #FFE4E1;" name="aPaterno" placeholder="Apellido Paterno" size="30">
+                        <input type="text" class="form-control" name="aPaterno" placeholder="Apellido Paterno" size="30">
                         <br>
                         <label>Apellido Materno</label>
-                        <input type="text" class="form-control" style="background-color: #FFE4E1;" name="aMaterno" placeholder="Apellido Materno" size="30">
+                        <input type="text" class="form-control" name="aMaterno" placeholder="Apellido Materno" size="30">
                         <br>
                         <label>Usuario</label>
-                        <input type="text" class="form-control" style="background-color: #FFE4E1;" name="usuario" placeholder="Usuario" size="20">
+                        <input type="text" class="form-control" name="usuario" placeholder="Usuario" size="20">
                         <br>
                         <label>Contraseña</label>
-                        <input type="password" class="form-control" style="background-color: #FFE4E1;" name="pass" placeholder="Contraseña" size="20">
+                        <input type="password" class="form-control" name="pass" placeholder="Contraseña" size="20">
                         <br>
                         <table>
                             <tr><th>Pais</th><th>Estado/Provincia</th></tr>
@@ -177,7 +178,7 @@ estados.add(Funcion.verEstados(2));
                         </table>
                         <br>
                         <table><tr><th>Fotografía
-                        <a onclick="swal('Fotografía','Esta fotografía podrá ser visible por toda la comunidad y aparecerá en tu perfil de usuario.','info');"><i class="fa fa-info-circle"></i></a>         
+                        <a style="color:#DC143C;" onclick="swal('Fotografía','Esta fotografía podrá ser visible por toda la comunidad y aparecerá en tu perfil de usuario.','info');"><i class="fa fa-info-circle"></i></a>         
                         </th></tr><tr><td><input type="file" name="foto" accept="image/*" onchange="loadFile(event)"/></td></tr><tr><td><img id="img"/></td></tr></table>
                         <script>
                         var loadFile = function(event) {
@@ -186,10 +187,10 @@ estados.add(Funcion.verEstados(2));
                         };
                         </script>
                         <br><label>Contacto</label>
-                        <a onclick="swal('Contacto','Especifica algún tipo de información para que las personas se puedan poner en contacto contigo. Por ejemplo:<br><br>Teléfono<br>Correo Electrónico<br>Redes Sociales','info');"><i class="fa fa-info-circle"></i></a>         
+                        <a style="color:#DC143C;" onclick="swal('Contacto','Especifica algún tipo de información para que las personas se puedan poner en contacto contigo. Por ejemplo:<br><br>Teléfono<br>Correo Electrónico<br>Redes Sociales','info');"><i class="fa fa-info-circle"></i></a>         
                         <br><textarea id="contacto" name="contacto" rows="5" cols="80"></textarea>
                         <br><br>
-                        <button type="button" class="btn btn-primary btn-lg" onclick="validacionRU();" style="background-color: #DC143C">Registrarme</button>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="validacionRU();">Registrarme</button>
                     </div>
                     <br><br><br><br>
                 </form> 

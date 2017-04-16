@@ -59,6 +59,18 @@ public class Funciones
         return categorias;
     }
     
+    public String verNombreCategoria(String idCategoria) throws SQLException{
+        query="select categoria from catCategorias where idCategoria="+idCategoria+";";
+        String categoria="";
+        DB.conectar();
+        resultados = DB.consulta(query);
+        if (resultados.next()) {
+            categoria = resultados.getString("categoria");
+        }
+        DB.cierraConexion();
+        return categoria;
+    }
+    
     public ArrayList<String> verArteCategoria(String idCategoria) throws SQLException{
         query="call verArteCategoria("+idCategoria+");";
         ArrayList<String> arte = new ArrayList<>();
@@ -170,6 +182,63 @@ public class Funciones
         }
         DB.cierraConexion();
         return arte;
+    }
+    
+    public void nuevoLike(String idArte,String idPersona,String tipo) throws SQLException{
+        query="call nuevoLike("+idArte+","+idPersona+","+tipo+");";
+        DB.conectar();
+        resultados = DB.consulta(query);
+        DB.cierraConexion();
+    }
+    
+    public void nuevoComentario(String idArte,String idPersona,String comentario) throws SQLException{
+        query="call nuevoComentario("+idArte+","+idPersona+",'"+comentario+"');";
+        DB.conectar();
+        resultados = DB.consulta(query);
+        DB.cierraConexion();
+    }
+    
+    public void nuevoFavorito(String idArte,String idPersona) throws SQLException{
+        query="call nuevoFavorito("+idArte+","+idPersona+");";
+        DB.conectar();
+        resultados = DB.consulta(query);
+        DB.cierraConexion();
+    }
+    
+    public boolean existeLike(String idArte,String idPersona) throws SQLException{
+        query="select idLike from likes where idLikeador = "+idPersona+" and idArte = "+idArte+" and tipo = '1';";
+        boolean existe = false;
+        DB.conectar();
+        resultados = DB.consulta(query);
+        if(resultados.next()){
+            existe = true;
+        }
+        DB.cierraConexion();
+        return existe;
+    }
+    
+    public boolean existeDislike(String idArte,String idPersona) throws SQLException{
+        query="select idLike from likes where idLikeador = "+idPersona+" and idArte = "+idArte+" and tipo = '0';";
+        boolean existe = false;
+        DB.conectar();
+        resultados = DB.consulta(query);
+        if(resultados.next()){
+            existe = true;
+        }
+        DB.cierraConexion();
+        return existe;
+    }
+    
+    public boolean existeFav(String idArte,String idPersona) throws SQLException{
+        query="select idFavorito from favoritos where idPersona = "+idPersona+" and idArte = "+idArte+";";
+        boolean existe = false;
+        DB.conectar();
+        resultados = DB.consulta(query);
+        if(resultados.next()){
+            existe = true;
+        }
+        DB.cierraConexion();
+        return existe;
     }
     
     public String[] verLikes(String idArte) throws SQLException{

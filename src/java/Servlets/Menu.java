@@ -101,14 +101,36 @@ public class Menu extends HttpServlet {
             case "1": {
                 String aPaterno = h.getPaterno();
                 String aMaterno = h.getMaterno();
+                String[] datos = null;
+                try {
+                    datos = Funcion.verDatosId(idPersona);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 out.println("<div class=\"container text-center\">");
                 out.println("<h1>Datos</h1><table>");
                 out.println("<tr><th>Nombre</th><td>" + nombre + "</td></tr>");
                 out.println("<tr><th>Apellido Paterno</th><td>" + aPaterno + "</td></tr>");
                 out.println("<tr><th>Apellido Materno</th><td>" + aMaterno + "</td></tr>");
-                out.println("<tr><th>Fotografía</th><td><img src=\"F?idPersona=" + idPersona + "\" width=\"87\" height=\"105\"></td></tr>");
+                out.println("<tr><th>Fotografía</th><td><img src=\"F?idPersona=" + idPersona + "\" width=\"100%\"></td></tr>");
                 out.println("</table>");
+                out.println("<br><br><table>");
+                out.println("<tr><th>Usuario</th><td>" + datos[3] + "</td></tr>");
+                out.println("<tr><th>Contraseña</th><td> **** </td></tr>");
+                out.println("<tr><th colspan=\"2\">Contacto</th></tr>");
+                out.println("<tr><td colspan=\"2\">"+datos[5]+"</td></tr>");
+                out.println("<tr><th>País</th><td>" + datos[9] + "</td></tr>");
+                out.println("<tr><th>Estado/Ciudad</th><td>" + datos[7] + "</td></tr>");
+                out.println("</table>");
+                out.println("<form>\n" +
+"                <input type=\"hidden\" name=\"opc\" value=\"1.1\"/>\n" +
+"                <button type=\"button\" class=\"btn btn-primary btn-lg\" onclick=\"submit();\">Modificar Datos</button>\n" +
+"            </form>");
                 out.println("</div>");
+                break;
+            }
+            case "1.1": {
+                
                 break;
             }
             case "2": {
@@ -117,7 +139,7 @@ public class Menu extends HttpServlet {
                         + "                        <input type=\"text\" class=\"form-control\" style=\"background-color: #FFE4E1;\" name=\"nombreArte\" placeholder=\"Nombre de la obra\">\n"
                         + "                        <br>\n"
                         + "                        <table><tr><th>Fotografía"
-                        + "<a onclick=\"swal('Fotografía','Tómale una foto a un boceto que hayas hecho de tu arte<br>Inluso puedes tomarle fotos a obras que ya has realizado en algún lugar de la ciudad<br>Recuerda que entre mejor se vea la foto es más probable que a las personas les atraiga y te contacten.','info');\"><i class=\"fa fa-info-circle\"></i></a>"
+                        + "<a style=\"color:#DC143C;\" onclick=\"swal('Fotografía','Tómale una foto a un boceto que hayas hecho de tu arte<br>Inluso puedes tomarle fotos a obras que ya has realizado en algún lugar de la ciudad<br>Recuerda que entre mejor se vea la foto es más probable que a las personas les atraiga y te contacten.','info');\"><i class=\"fa fa-info-circle\"></i></a>"
                         + "</th></tr><tr><td><input type=\"file\" name=\"foto\" accept=\"image/*\" onchange=\"loadFile(event)\"/></td></tr><tr><td><img style=\"width: 100%\" id=\"img\"/></td></tr></table>\n"
                         + "<script>\n"
                         + "                        var loadFile = function(event) {\n"
@@ -128,18 +150,18 @@ public class Menu extends HttpServlet {
                         + "                        <br>"
                         + "                        <table><tr>"
                         + "<th style=\"width: 50%\">Costo aproximado"
-                        + "<a onclick=\"swal('Costo Aproximado','En este costo incluye el precio de los materiales que necesitarías para pintarlo en una pared. <br>Pon el costo en la moneda de tu país. (Ejemplo: México-Pesos)<br> No pongas el precio con centavos, solo es un aproximado.','info');\"><i class=\"fa fa-info-circle\"></i></a>"
+                        + "<a style=\"color:#DC143C;\" onclick=\"swal('Costo Aproximado','En este costo incluye el precio de los materiales que necesitarías para pintarlo en una pared. <br>Pon el costo en la moneda de tu país. (Ejemplo: México-Pesos)<br> No pongas el precio con centavos, solo es un aproximado.','info');\"><i class=\"fa fa-info-circle\"></i></a>"
                         + "                        </th>"
                         + "<th style=\"width: 50%\">Tiempo aproximado de pintado"
-                        + "<a onclick=\"swal('Tiempo Aproximado','Tiempo aproximado expresado en horas que te tomaría realizar tu obra de arte en una pared.','info');\"><i class=\"fa fa-info-circle\"></i></a>"
+                        + "<a style=\"color:#DC143C;\" onclick=\"swal('Tiempo Aproximado','Tiempo aproximado expresado en horas que te tomaría realizar tu obra de arte en una pared.','info');\"><i class=\"fa fa-info-circle\"></i></a>"
                         + "                       </th></tr>"
                         + "<tr><td><input type=\"number\" class=\"form-control\" style=\"background-color: #FFE4E1;\" name=\"costo\" placeholder=\"Costo aprox.\"></td>"
                         + "                        <td><input type=\"number\" class=\"form-control\" style=\"background-color: #FFE4E1;\" name=\"tiempo\" placeholder=\"Horas aprox.\"></td>"
                         + "                        </tr><tr><th colspan=\"2\">Descripción"
-                        + "<a onclick=\"swal('Descripción','Pequeña descripción acerca de tu obra de arte, tu inspiración, lo que representa, el estilo y técnica utilizados, etc.','info');\"><i class=\"fa fa-info-circle\"></i></a>"
+                        + "<a style=\"color:#DC143C;\" onclick=\"swal('Descripción','Pequeña descripción acerca de tu obra de arte, tu inspiración, lo que representa, el estilo y técnica utilizados, etc.','info');\"><i class=\"fa fa-info-circle\"></i></a>"
                         + "</th></tr><tr><td colspan=\"2\"><textarea id=\"descripcion\" name=\"descripcion\" rows=\"5\" cols=\"80\"></textarea></td></tr>"
                         + "                        </table><br><label>Categoría"
-                        + "<a onclick=\"swal('Categoría','Selecciona la categoría a la que pertenece tu arte, si crees que encaja en más de 1 categoría, solo selecciona la que más representativa.','info');\"><i class=\"fa fa-info-circle\"></i></a>"
+                        + "<a style=\"color:#DC143C;\" onclick=\"swal('Categoría','Selecciona la categoría a la que pertenece tu arte, si crees que encaja en más de 1 categoría, solo selecciona la que más representativa.','info');\"><i class=\"fa fa-info-circle\"></i></a>"
                         + "</label><br><select name=\"idCategoria\">");
                 ArrayList<String> categorias = null;
                 try {
@@ -151,7 +173,7 @@ public class Menu extends HttpServlet {
                     out.println("<option value=\"" + categorias.get(i) + "\">" + categorias.get(i + 1) + "</option>");
                 }
                 out.println("</select><br><br>"
-                        + "                        <button type=\"button\" class=\"btn btn-primary btn-lg\" onclick=\"validacionNA();\" style=\"background-color: #DC143C\">Agregar</button>\n"
+                        + "                        <button type=\"button\" class=\"btn btn-primary btn-lg\" onclick=\"validacionNA();\">Agregar Arte</button>\n"
                         + "                    <input type=\"hidden\" name=\"opc\" id=\"opc\" value=\"2.1\"><br><br><br><br>\n"
                         + "                </form></div>");
                 break;
@@ -172,19 +194,20 @@ public class Menu extends HttpServlet {
                     Funcion.agregarArte(nombreArte, f, costo, tiempo, descripcion, idCategoria, idPersona);
                     out.println("<form action=\"menu.jsp\" method=\"POST\" name=\"red\" id=\"red\">\n"
                             + "                     <input type=\"hidden\" name=\"ok\" value=\"ok\">"
-                            + "                 </form><script>Redirigir();</script>");
+                            + "                 </form>");
                 } catch (SQLException ex) {
                     Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
                     out.println("<form action=\"menu.jsp\" method=\"POST\" name=\"red\" id=\"red\">\n"
                             + "                     <input type=\"hidden\" name=\"ok\" value=\"error\">"
-                            + "                 </form><script>Redirigir();</script>");
+                            + "                 </form>");
                 }
+                out.println("<script>document.red.submit();</script>");
                 break;
             }
             case "3": {
-ArrayList<String> arte = null;
+                ArrayList<String> arte = null;
                 try {
-                    arte = Funcion.verArtePersona(idPersona);
+                    arte = Funcion.verArteFavorito(idPersona);
                 } catch (SQLException ex) {
                     Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -194,8 +217,7 @@ ArrayList<String> arte = null;
                         + "        </form>");
                 if (arte != null) {
                     out.println("<br><br><br><br>"
-                            + "            <div class=\"papaCatalogo\">\n"
-                            + "                <div class=\"clearfix grid\" >");
+                            + "                <div class=\"clearfix grid papaCatalogo\" >");
 
                     for (int i = 0; i < arte.size(); i = i + 7) {
                         String[] likes = null;
@@ -205,22 +227,16 @@ ArrayList<String> arte = null;
                             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
-                        out.println("<div class=\"catalogo\">\n"
-                                + "                        <figure class=\"effect-oscar  wowload fadeInUp\" style=\"width:100%;\">\n"
-                                + "                            <img src=\"F?idArte=" + arte.get(i) + "\" width=\"100%\">\n"
-                                + "                            <figcaption style=\"width:100%;\">\n"
-                                + "                                <p>\n"
-                                + "                                    <a onclick=\"document.getElementById('idArte').value = " + arte.get(i) + "; document.formu.submit();\">Ver Ficha<br>\n"
-                                + "                                        <i class=\"fa fa-thumbs-up\"></i> " + likes[0] + " <i class=\"fa fa-thumbs-up\"></i><br>\n"
-                                + "                                        <i class=\"fa fa-thumbs-down\"></i> " + likes[1] + " <i class=\"fa fa-thumbs-down\"></i>\n"
-                                + "                                    </a>\n"
-                                + "                                </p>\n"
-                                + "                            </figcaption>\n"
-                                + "                        </figure>\n"
-                                + "                    </div>");
+                        out.println("<div class=\"catalogo\" onclick=\"document.getElementById('idArte').value = "+arte.get(i)+"; document.formu.submit();\">\n" +
+"                        <figure class=\"effect-oscar  wowload fadeInUp\" style=\"width:100%;\">\n" +
+"                            <img src=\"F?idArte="+arte.get(i)+"\" style=\"width:100%;\">\n" +
+"                            <figcaption style=\"width:100%;\">\n" +
+"                                <p><a>Ver Ficha de Arte</a></p>" +
+"                            </figcaption>\n" +
+"                        </figure>\n" +
+"                    </div>");
                     }
                     out.println("</div>\n"
-                            + "            </div>\n"
                             + "        </div>");
                 }else{
                     out.println("<h1>Aún no has agregado ninguna obra a tus favoritos...</h1></div>");
@@ -241,8 +257,7 @@ ArrayList<String> arte = null;
                         + "        </form>");
                 if (arte != null) {
                     out.println("<br><br><br><br>"
-                            + "            <div class=\"papaCatalogo\">\n"
-                            + "                <div class=\"clearfix grid\" >");
+                            + "                <div class=\"clearfix grid papaCatalogo\" >");
 
                     for (int i = 0; i < arte.size(); i = i + 7) {
                         String[] likes = null;
@@ -252,12 +267,12 @@ ArrayList<String> arte = null;
                             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
-                        out.println("<div class=\"catalogo\">\n"
+                        out.println("<div class=\"catalogo\" onclick=\"document.getElementById('idArte').value = "+arte.get(i)+"; document.formu.submit();\">\n"
                                 + "                        <figure class=\"effect-oscar  wowload fadeInUp\" style=\"width:100%;\">\n"
                                 + "                            <img src=\"F?idArte=" + arte.get(i) + "\" width=\"100%\">\n"
                                 + "                            <figcaption style=\"width:100%;\">\n"
                                 + "                                <p>\n"
-                                + "                                    <a onclick=\"document.getElementById('idArte').value = " + arte.get(i) + "; document.formu.submit();\">Ver Ficha<br>\n"
+                                + "                                    <a>Ver Ficha<br>\n"
                                 + "                                        <i class=\"fa fa-thumbs-up\"></i> " + likes[0] + " <i class=\"fa fa-thumbs-up\"></i><br>\n"
                                 + "                                        <i class=\"fa fa-thumbs-down\"></i> " + likes[1] + " <i class=\"fa fa-thumbs-down\"></i>\n"
                                 + "                                    </a>\n"
@@ -267,7 +282,6 @@ ArrayList<String> arte = null;
                                 + "                    </div>");
                     }
                     out.println("</div>\n"
-                            + "            </div>\n"
                             + "        </div>");
                 }else{
                     out.println("<h1>Aún no has compartido tu arte con la comunidad de Lienzo Urbano...</h1></div>");

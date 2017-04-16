@@ -98,29 +98,32 @@
 
         <div class="contenido text-center">
             <br><br><br><h1>TOP 10</h1><h3>En esta sección podrás ver las obras de arte que más le han gustado a la comunidad de Lienzo Urbano</h3><br>
-            <div class="papaCatalogo">
-                <div class="clearfix grid" >
-                    <%
-                        int x = 0;
-                        for (int i = 0; i < arte.size(); i = i + 7) {
-                            String[] likes = Funcion.verLikes(arte.get(i));
-                            x = x + 1;%>
-                    <div class="catalogo">
-                        <figure class="effect-oscar  wowload fadeInUp" style="width:100%;">
-                            <img src="F?idArte=<%=arte.get(i)%>" style="width:100%;">
-                            <figcaption style="width:100%;">
-                                <h2><%=x%>º</h2>
-                                <p>
-                                    <a onclick="document.getElementById('idArte').value = <%=arte.get(i)%>; document.formu.submit();">Ver Ficha<br>
-                                        <i class="fa fa-thumbs-up"></i> <%=likes[0]%> <i class="fa fa-thumbs-up"></i><br>
-                                        <i class="fa fa-thumbs-down"></i> <%=likes[1]%> <i class="fa fa-thumbs-down"></i>
-                                    </a>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </div>
+            <div class="clearfix grid papaCatalogo" >
+                <%
+                    int x = 0;
+                    for (int i = 0; i < arte.size(); i = i + 7) {
+                        String[] likes = Funcion.verLikes(arte.get(i));
+                        x = x + 1;%>
+                <div class="catalogo"
+                    <%if(id==null){%>
+                        onclick="swal('Inicia Sesión','Para poder ver la ficha de una obra, tienes que iniciar sesión primero','info');"
+                    <%}else{%>
+                        onclick="document.getElementById('idArte').value = <%=arte.get(i)%>; document.formu.submit();"
                     <%}%>
+                >
+                    <figure class="effect-oscar  wowload fadeInUp" style="width:100%;">
+                        <img src="F?idArte=<%=arte.get(i)%>" style="width:100%;">
+                        <figcaption style="width:100%;">
+                            <h2><%=x%>º</h2>
+                            <p><a data-gallery>Ver Ficha de Arte<br>
+                                    <i class="fa fa-thumbs-up"></i> <%=likes[0]%> <i class="fa fa-thumbs-up"></i><br>
+                                    <i class="fa fa-thumbs-down"></i> <%=likes[1]%> <i class="fa fa-thumbs-down"></i>
+                                </a>
+                            </p>
+                        </figcaption>
+                    </figure>
                 </div>
+                <%}%>
             </div>
         </div>
 

@@ -24,7 +24,8 @@
         e.printStackTrace();
     }
     String idCategoria = request.getParameter("idCategoria");
-    ArrayList<String> arte = Funcion.verArteCategoria(idCategoria);
+    ArrayList<String> arte = null;
+    arte = Funcion.verArteCategoria(idCategoria);
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -48,21 +49,6 @@
         <script src="https://cdn.jsdelivr.net/sweetalert2/5.3.2/sweetalert2.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/5.3.2/sweetalert2.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/5.3.2/sweetalert2.css">
-        
-        <script src="assets/masonry.pkgd.min.js"></script>
-        <script>
-          $(function(){
-
-            var $container = $('.papaCatalogo');
-
-            $container.imagesLoaded( function(){
-              $container.masonry({
-                itemSelector : '.catalogo'
-              });
-            });
-
-          });
-        </script>
     </head>
     <body>
         <div class="topbar animated fadeInLeftBig"></div>
@@ -112,23 +98,30 @@
         </form>
 
         <div class="contenido text-center">
-            <br><br><br><br>
-            <div>
+            <br><br><br>
+            <%if(arte==null){ String categoria = Funcion.verNombreCategoria(idCategoria);%>
+                <h1><%=categoria%></h1>
+                <br><br>
+                <h2>Por el momento no hay arte en esta categoría...</h2>
+            <%}else{%>
+                <h1><%=arte.get(6)%></h1>
                 <div class="clearfix grid papaCatalogo" >
-                    <%
-                        int x = 0;
-                        for (int i = 0; i < arte.size(); i = i + 7) {
-                            String[] likes = Funcion.verLikes(arte.get(i));
-                        x = x + 1;%>
-                    <div class="catalogo">
+                    <%for (int i = 0; i < arte.size(); i = i + 7) {%>
+                    <div class="catalogo"
+                        <%if(id==null){%>
+                            onclick="swal('Inicia Sesión','Para poder ver la ficha de una obra, tienes que iniciar sesión primero','info');"
+                        <%}else{%>
+                            onclick="document.getElementById('idArte').value = <%=arte.get(i)%>; document.formu.submit();"
+                        <%}%>
+                    >
                         <figure class="effect-oscar  wowload fadeInUp" style="width:100%;">
                             <img src="F?idArte=<%=arte.get(i)%>" style="width:100%;">
                             <figcaption style="width:100%;">
                                 <p>
                                     <%if(id==null){%>
-                                        <a href="" onclick="swal('Inicia Sesión','Para poder ver la ficha de una obra, tienes que iniciar sesión primero','info');">Tratar de ver Ficha de Arte</a>
+                                        <a data-gallery>Tratar de ver Ficha de Arte</a>
                                     <%}else{%>
-                                        <a href="" onclick="document.getElementById('idArte').value = <%=arte.get(i)%>; document.formu.submit();">Ver Ficha de Arte</a>
+                                        <a data-gallery>Ver Ficha de Arte</a>
                                     <%}%>
                                 </p>            
                             </figcaption>
@@ -136,7 +129,7 @@
                     </div>
                     <%}%>
                 </div>
-            </div>
+            <%}%>
         </div>
 
         <footer>
