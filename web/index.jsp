@@ -39,6 +39,13 @@ try {
         <script src="https://cdn.jsdelivr.net/sweetalert2/5.3.2/sweetalert2.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/5.3.2/sweetalert2.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/5.3.2/sweetalert2.css">
+        <script>
+            function verCategoria(idCategoria){
+                document.getElementById("idCategoria").value=idCategoria;
+                document.formu.submit();
+            }
+            
+        </script>
     </head>
     <body>
         <div class="topbar animated fadeInLeftBig"></div>
@@ -130,82 +137,85 @@ try {
                 </div>
             </div>
 
+            <form method="post" action="categoria.jsp" name="formu">
+                <input type="hidden" name="idCategoria" id="idCategoria" value="1">
+            </form>
 
             <div class="text-center text-primary">
                 <h1>Tus sueños son nuestro lienzo...</h1>
             </div>
             <div class=" clearfix grid"> 
                 <figure class="effect-oscar  wowload fadeInUp">
-                    <img src="images/portfolio/1.jpg" alt="img01"/>
+                    <img src="images/categorias/paisaje.jpg" alt="Paisajes"/>
                     <figcaption>
-                        <h2>Nature</h2>
-                        <p>Lily likes to play with crayons and pencils<br>
-                            <a href="images/portfolio/1.jpg" title="1" data-gallery>View more</a></p>            
+                        <h2>Paisajes</h2>
+                        <p><br>
+                            <a href="images/categorias/paisaje.jpg" onclick="verCategoria(1);" title="Paisajes" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
                 <figure class="effect-oscar  wowload fadeInUp">
-                    <img src="images/portfolio/2.jpg" alt="img01"/>
+                    <img src="images/categorias/abstracto.jpg" alt="Abstracto"/>
                     <figcaption>
-                        <h2>Events</h2>
-                        <p>Lily likes to play with crayons and pencils<br>
-                            <a href="images/portfolio/2.jpg" title="1" data-gallery>View more</a></p>            
+                        <h2>Abstracto</h2>
+                        <p><br>
+                            <a href="images/categorias/abstracto.jpg" onclick="verCategoria(2);" title="Abstracto" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
                 <figure class="effect-oscar  wowload fadeInUp">
-                    <img src="images/portfolio/3.jpg" alt="img01"/>
+                    <img src="images/categorias/minimalista.jpg" alt="Minimalista"/>
                     <figcaption>
-                        <h2>music</h2>
-                        <p>Lily likes to play with crayons and pencils<br>
-                            <a href="images/portfolio/3.jpg" title="1" data-gallery>View more</a></p>            
+                        <h2>Minimalismo</h2>
+                        <p><br>
+                            <a href="images/categorias/minimalista.jpg" onclick="verCategoria(3);" title="Minimalismo" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
                 <figure class="effect-oscar  wowload fadeInUp">
-                    <img src="images/portfolio/4.jpg" alt="img01"/>
+                    <img src="images/categorias/caricatura.jpg" alt="Caricatura"/>
                     <figcaption>
-                        <h2>Vintage</h2>
-                        <p>Lily likes to play with crayons and pencils<br>
-                            <a href="images/portfolio/4.jpg" title="1" data-gallery>View more</a></p>            
+                        <h2>Caricaturas</h2>
+                        <p><br>
+                            <a href="images/categorias/caricatura.jpg" onclick="verCategoria(4);" title="Caricaturas" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
                 <figure class="effect-oscar  wowload fadeInUp">
-                    <img src="images/portfolio/5.jpg" alt="img01"/>
+                    <img src="images/categorias/realista.jpg" alt="Realista"/>
                     <figcaption>
-                        <h2>Typers</h2>
-                        <p>Lily likes to play with crayons and pencils<br>
-                            <a href="images/portfolio/5.jpg" title="1" data-gallery>View more</a></p>            
+                        <h2>Realismo</h2>
+                        <p><br>
+                            <a href="images/categorias/realista.jpg" onclick="verCategoria(5);" title="Realismo" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
 
                 <figure class="effect-oscar  wowload fadeInUp">
-                    <img src="images/portfolio/6.jpg" alt="img01"/>
+                    <img src="images/categorias/poesia.jpg" alt="Acción Poética"/>
                     <figcaption>
-                        <h2>hotel</h2>
-                        <p>Lily likes to play with crayons and pencils<br>
-                            <a href="images/portfolio/6.jpg" title="1" data-gallery>View more</a></p>            
+                        <h2>Acción Poética</h2>
+                        <p><br>
+                            <a href="images/categorias/poesia.jpg" onclick="verCategoria(6);" title="Acción Poética" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
                 <figure class="effect-oscar  wowload fadeInUp">
-                    <img src="images/portfolio/7.jpg" alt="img01"/>
+                    <img src="images/categorias/3d.jpg" alt="3D"/>
                     <figcaption>
-                        <h2>Chinese</h2>
-                        <p>Lily likes to play with crayons and pencils<br>
-                            <a href="images/portfolio/7.jpg" title="1" data-gallery>View more</a></p>            
+                        <h2>3D</h2>
+                        <p><br>
+                            <a href="images/categorias/3d.jpg" onclick="verCategoria(7);" title="3D" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
                 <figure class="effect-oscar  wowload fadeInUp">
-                    <img src="images/portfolio/9.jpg" alt="img01"/>
+                    <img src="images/categorias/vida.jpeg" alt="Vida"/>
                     <figcaption>
-                        <h2>Coffee</h2>
-                        <p>Lily likes to play with crayons and pencils<br>
-                            <a href="images/portfolio/9.jpg" title="1" data-gallery>View more</a></p>            
+                        <h2>Fauna</h2>
+                        <p><br>
+                            <a href="images/categorias/vida.jpeg" onclick="verCategoria(8);" title="Fauna" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
                 <figure class="effect-oscar  wowload fadeInUp">
-                    <img src="images/portfolio/11.jpg" alt="img01"/>
+                    <img src="images/categorias/humor.jpg" alt="Humor"/>
                     <figcaption>
-                        <h2>design</h2>
-                        <p>Lily likes to play with crayons and pencils<br>
-                            <a href="images/portfolio/11.jpg" title="1" data-gallery>View more</a></p>            
+                        <h2>Humor</h2>
+                        <p><br>
+                            <a href="images/categorias/humor.jpg" onclick="verCategoria(9);" title="Humor" data-gallery>Ver Categoría</a></p>            
                     </figcaption>
                 </figure>
             </div>

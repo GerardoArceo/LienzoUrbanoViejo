@@ -46,6 +46,145 @@ public class Funciones
         return estados;
     }
     
+    public ArrayList<String> verCategorias() throws SQLException{
+        query="select * from catCategorias;";
+        ArrayList<String> categorias = new ArrayList<>();
+        DB.conectar();
+        resultados = DB.consulta(query);
+        while (resultados.next()) {
+            categorias.add(resultados.getString("idCategoria"));
+            categorias.add(resultados.getString("categoria"));
+        }
+        DB.cierraConexion();
+        return categorias;
+    }
+    
+    public ArrayList<String> verArteCategoria(String idCategoria) throws SQLException{
+        query="call verArteCategoria("+idCategoria+");";
+        ArrayList<String> arte = new ArrayList<>();
+        DB.conectar();
+        resultados = DB.consulta(query);
+        while (resultados.next()) {
+            arte.add(resultados.getString("idArte"));
+            arte.add(resultados.getString("nombre"));
+            arte.add(resultados.getString("costo"));
+            arte.add(resultados.getString("tiempo"));
+            arte.add(resultados.getString("fecha"));
+            arte.add(resultados.getString("descripcion"));
+            arte.add(resultados.getString("categoria"));
+        }
+        DB.cierraConexion();
+        return arte;
+    }
+    
+    public ArrayList<String> verArteTop() throws SQLException{
+        query="call verArteTop();";
+        ArrayList<String> arte = new ArrayList<>();
+        DB.conectar();
+        resultados = DB.consulta(query);
+        while (resultados.next()) {
+            arte.add(resultados.getString("idArte"));
+            arte.add(resultados.getString("nombre"));
+            arte.add(resultados.getString("costo"));
+            arte.add(resultados.getString("tiempo"));
+            arte.add(resultados.getString("fecha"));
+            arte.add(resultados.getString("descripcion"));
+            arte.add(resultados.getString("categoria"));
+        }
+        DB.cierraConexion();
+        return arte;
+    }
+    
+    public ArrayList<String> verArtePersona(String idPersona) throws SQLException{
+        query="call verArtePersona("+idPersona+");";
+        ArrayList<String> arte = new ArrayList<>();
+        DB.conectar();
+        resultados = DB.consulta(query);
+        while (resultados.next()) {
+            arte.add(resultados.getString("idArte"));
+            arte.add(resultados.getString("nombre"));
+            arte.add(resultados.getString("costo"));
+            arte.add(resultados.getString("tiempo"));
+            arte.add(resultados.getString("fecha"));
+            arte.add(resultados.getString("descripcion"));
+            arte.add(resultados.getString("categoria"));
+        }
+        DB.cierraConexion();
+        return arte;
+    }
+    
+    public ArrayList<String> verArteFavorito(String idPersona) throws SQLException{
+        query="call verArteFavorito("+idPersona+");";
+        ArrayList<String> arte = new ArrayList<>();
+        DB.conectar();
+        resultados = DB.consulta(query);
+        while (resultados.next()) {
+            arte.add(resultados.getString("idArte"));
+            arte.add(resultados.getString("nombre"));
+            arte.add(resultados.getString("costo"));
+            arte.add(resultados.getString("tiempo"));
+            arte.add(resultados.getString("fecha"));
+            arte.add(resultados.getString("descripcion"));
+            arte.add(resultados.getString("categoria"));
+        }
+        DB.cierraConexion();
+        return arte;
+    }
+        
+    public String[] verArte(String idArte) throws SQLException{
+        query="call verArte("+idArte+");";
+        String[] arte = new String[9];
+        DB.conectar();
+        resultados = DB.consulta(query);
+        if (resultados.next()) {
+            arte[0]=(resultados.getString("idArte"));
+            arte[1]=(resultados.getString("nombre"));
+            arte[2]=(resultados.getString("costo"));
+            arte[3]=(resultados.getString("tiempo"));
+            arte[4]=(resultados.getString("fecha"));
+            arte[5]=(resultados.getString("descripcion"));
+            arte[6]=(resultados.getString("categoria"));
+            arte[7]=(resultados.getString("idCategoria"));
+            arte[8]=(resultados.getString("idArtista"));
+        }
+        DB.cierraConexion();
+        return arte;
+    }
+    
+    public String[] verDatosId(String idPersona) throws SQLException{
+        query="call verDatosId("+idPersona+");";
+        String[] arte = new String[10];
+        DB.conectar();
+        resultados = DB.consulta(query);
+        if (resultados.next()) {
+            arte[0]=(resultados.getString("nombre"));
+            arte[1]=(resultados.getString("aPaterno"));
+            arte[2]=(resultados.getString("aMaterno"));
+            arte[3]=(resultados.getString("usuario"));
+            arte[4]=(resultados.getString("pass"));
+            arte[5]=(resultados.getString("contacto"));
+            arte[6]=(resultados.getString("idEstado"));
+            arte[7]=(resultados.getString("estado"));
+            arte[8]=(resultados.getString("idPais"));
+            arte[9]=(resultados.getString("pais"));
+        }
+        DB.cierraConexion();
+        return arte;
+    }
+    
+    public String[] verLikes(String idArte) throws SQLException{
+        query="call verLikes("+idArte+");";
+        String likes[] = new String[2];
+        DB.conectar();
+        resultados = DB.consulta(query);
+        if (resultados.next()) {
+            likes[0]=resultados.getString("likes");
+            likes[1]=resultados.getString("dislikes");
+        }
+        DB.cierraConexion();
+        return likes;
+    }
+    
     public Usuario iniciarSesion(String usuario, String pass) throws SQLException{
         query="call verDatos('"+usuario+"' , '"+pass+"');";
         Usuario p = new Usuario();
@@ -62,8 +201,8 @@ public class Funciones
         return p;
     }
     
-    public String registrarPersona(String nombre, String aPaterno, String aMaterno, String usuario, String pass, String idEstado) throws SQLException{
-        query="call registrarPersona('"+nombre+"','"+aPaterno+"','"+aMaterno+"','"+usuario+"','"+pass+"',"+idEstado+");";
+    public String registrarPersona(String nombre, String aPaterno, String aMaterno, String usuario, String pass, String idEstado, String contacto) throws SQLException{
+            query="call registrarPersona('"+nombre+"','"+aPaterno+"','"+aMaterno+"','"+usuario+"','"+pass+"',"+idEstado+",'"+contacto+"');";
         String msj = "";
         DB.conectar();
         resultados = DB.consulta(query);
@@ -75,17 +214,17 @@ public class Funciones
     }
     
     public void agregarArte(String nombre,InputStream foto,String costo,String tiempo,String descripcion,String idCategoria,String idArtista) throws SQLException{
-        query="call registrarPersona(?,?,?,?,?,?,?);";
+        query="call agregarArte(?,?,?,?,?,?,?);";
         DB.conectar();
         Connection con = DB.getCon();
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, nombre);
             ps.setBinaryStream(2, foto);
-            ps.setString(1, costo);
-            ps.setString(1, tiempo);
-            ps.setString(1, descripcion);
-            ps.setString(1, idCategoria);
-            ps.setString(1, idArtista);
+            ps.setString(3, costo);
+            ps.setString(4, tiempo);
+            ps.setString(5, descripcion);
+            ps.setString(6, idCategoria);
+            ps.setString(7, idArtista);
             ps.executeUpdate();
             ps.close();
         }

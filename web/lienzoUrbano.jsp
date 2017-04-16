@@ -95,7 +95,7 @@ try {
         
         <div class="contenido" id="up">
             <div class="text-center container">
-                <br><br><br><br>
+            <br><br><br><h1>PREGUNTAS FRECUENTES</h1><h3>En esta sección podrás enterarte de todo lo referente al proyecto de Lienzo Urbano</h3><br>
                 <div id="mostrado1">
                     <p class="lead" onclick="mostrar(1)"><a><strong>¿Qué es Lienzo Urbano? <i class="fa fa-arrow-down"></i></strong></a></p>
                 </div>

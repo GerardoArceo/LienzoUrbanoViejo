@@ -11,6 +11,11 @@
     <servlet>
         <servlet-name>Menu</servlet-name>
         <servlet-class>Servlets.Menu</servlet-class>
+        <multipart-config>
+            <max-file-size>10485760</max-file-size>
+            <max-request-size>20971520</max-request-size>
+            <file-size-threshold>5242880</file-size-threshold>
+        </multipart-config>
     </servlet>
     <servlet>
         <servlet-name>Registro</servlet-name>

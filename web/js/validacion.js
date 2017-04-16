@@ -26,6 +26,24 @@ function validacionIS(){ //validacion del inicio de sesion
     }
 }
 
+function validacionNA(){ //validacion de nuevo arte
+    val=1;
+    
+    if (document.formu.nombreArte.value.length===0){ 
+        swal('Error','Tiene que escribir el nombre de su obra','error');
+        val= 0; 
+    }
+    
+    if(document.formu.nombreArte.value.length>100){
+        swal('Error','Sobrepasaste el límite de 100 caracteres en el nombre de la obra','error');
+        val= 0; 
+    }
+    
+    if(val===1){
+        document.formu.submit();
+    }
+}
+
 function validacionRU(){ //validacion del registro de usuarios
     val=1;
     
@@ -92,3 +110,4 @@ function validacionRU(){ //validacion del registro de usuarios
 function Redirigir(){ //redirige
     document.red.submit();
 }
+

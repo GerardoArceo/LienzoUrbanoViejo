@@ -27,6 +27,7 @@ public class Registro extends HttpServlet
         String idEstado = request.getParameter("ciudad");
         String usuario = request.getParameter("usuario");
         String pass = request.getParameter("pass");
+        String contacto = request.getParameter("contacto");
         final Part foto = request.getPart("foto");
         final String tipo = foto.getContentType();
         final long size = foto.getSize();
@@ -37,7 +38,7 @@ public class Registro extends HttpServlet
         pass = pass.replace("#", "");
         String msj = "";
         try {
-            msj=Funcion.registrarPersona(nombre, aPaterno, aMaterno, usuario, pass, idEstado);
+            msj=Funcion.registrarPersona(nombre, aPaterno, aMaterno, usuario, pass, idEstado, contacto);
             if (size < 1500000L) {
                 if (tipo.equals("image/jpeg") || tipo.equals("image/png") || tipo.equals("image/jpg")) {
                     Funcion.guardaImagen(usuario, f);

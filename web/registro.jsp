@@ -176,8 +176,19 @@ estados.add(Funcion.verEstados(2));
                             </tr>
                         </table>
                         <br>
-                        <table><tr><th>Fotografía</th></tr><tr><td><input type="file" name="foto"/></td></tr></table>
-                        <div class="text-center container active"><br> </div>
+                        <table><tr><th>Fotografía
+                        <a onclick="swal('Fotografía','Esta fotografía podrá ser visible por toda la comunidad y aparecerá en tu perfil de usuario.','info');"><i class="fa fa-info-circle"></i></a>         
+                        </th></tr><tr><td><input type="file" name="foto" accept="image/*" onchange="loadFile(event)"/></td></tr><tr><td><img id="img"/></td></tr></table>
+                        <script>
+                        var loadFile = function(event) {
+                            var output = document.getElementById('img');
+                            output.src = URL.createObjectURL(event.target.files[0]);
+                        };
+                        </script>
+                        <br><label>Contacto</label>
+                        <a onclick="swal('Contacto','Especifica algún tipo de información para que las personas se puedan poner en contacto contigo. Por ejemplo:<br><br>Teléfono<br>Correo Electrónico<br>Redes Sociales','info');"><i class="fa fa-info-circle"></i></a>         
+                        <br><textarea id="contacto" name="contacto" rows="5" cols="80"></textarea>
+                        <br><br>
                         <button type="button" class="btn btn-primary btn-lg" onclick="validacionRU();" style="background-color: #DC143C">Registrarme</button>
                     </div>
                     <br><br><br><br>

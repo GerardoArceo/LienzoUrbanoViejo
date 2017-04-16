@@ -18,10 +18,15 @@ public class F extends HttpServlet //Servlet desplegador de fotos
     protected void processRequest(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         String idPersona = request.getParameter("idAlumno");
+        String idArte = request.getParameter("idArte");
         DB DB = new DB();
         DB.conectar();
-        String query="call verDatos("+idPersona+");";
-        
+        String query="";
+        if(idArte!=null){
+            query="call verArte("+idArte+");";
+        }else{
+            query="call verDatos("+idPersona+");";
+        }        
         ResultSet resultados = DB.consulta(query);
         if (resultados.next()) {
             try {

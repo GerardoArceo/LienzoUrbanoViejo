@@ -86,8 +86,7 @@ try {
                                 
         <div class="contenido" id="up">
             <div class="text-center">
-                <br><br><br><br>
-                <h2>Patrocinadores</h2><br>
+                <h1>Patrocinadores</h1>
                 <p class="lead">El proyecto de lienzo Urbano es posible gracias a: <br>Gerardo Arceo (Autor)<br>
                     <br>Patrocinadores:<br>Por el momento Lienzo Urbano no está patrocinado por nadie, si quieres formar 
                     parte de la iniciativa ponte en contacto con el equipo de desarrollo a través del siguiente correo: mr.gerardo.arceo@gmail.com
