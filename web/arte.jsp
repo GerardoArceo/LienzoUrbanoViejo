@@ -102,6 +102,193 @@
                     });
                 });
             });
+
+            $(document).ready(function() {
+                $('#botonComentario').click(function(event) {
+                    var _idPersona = $('#idPersona').val();
+                    var _idArte = $('#idArte').val();
+                    var _comentario = $('#comentario').val();
+                    // Si en vez de por post lo queremos hacer por get, cambiamos el $.post por $.get
+                    $.post('ActionServlet', {
+                        idPersona : _idPersona,
+                        idArte : _idArte,
+                        comentario : _comentario,
+                        peticion : 'comentario'
+                    }, function(responseText) {
+                        $('#Jcomentario').html(responseText);
+                    });
+                });
+            });
+        </script>
+
+    </head>
+    <body>
+        <div class="topbar animated fadeInLeftBig"></div>
+        <div class="navbar-wrapper">
+            <div class="container">
+                <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="top-nav">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="index.jsp"><img onclick="window.location = 'index.jsp'" src="images/logo.png" alt="Lienzo Urbano"></a>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <div class="navbar-collapse  collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li ><a href="index.jsp">Inicio</a></li>
+                                <li ><a href="top.jsp">Top</a></li>
+                                <li ><a href="lienzoUrbano.jsp">¿Lienzo Urbano?</a></li>
+                                <li ><a href="patrocinadores.jsp">Patrocinadores</a></li>
+                                    <%if (nombre == null) {%>
+                                <li ><a href="inicioSesion.jsp">Ingresar</a></li>
+                                    <%} else {%>
+                                <li class="active"><a href="menu.jsp">Menú</a></li>
+                                <li>
+                                    <form action="Menu" method="post" name="red"><input type="hidden" name="opc" value="1"></form>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%out.print("Hola " + nombre);%> <i class="fa fa-angle-down"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a onclick="Redirigir();">Ver mis datos</a></li>
+                                        <li><a href="CerrarSesion">Cerrar Sesión</a></li>
+                                    </ul>
+                                </li>
+                                <%}%>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br><br>
+        <div class="contenido text-center container">
+            <table>
+                <tr>
+                    <th colspan="3">
+                        <%=arte[1]%>
+                    </th>
+                    <th colspan="2">
+                        <%=persona[0]%> <%=persona[1]%> <%=persona[2]%>
+                    </th>
+                </tr>
+                <tr>
+                    <td style="width:70%;" rowspan="5" colspan="3">
+                        <img src="F?idArte=<%=arte[0]%>" style="width:100%;" alt="">
+                    </td>
+                    <td style="width:30%;" colspan="2">
+                        <img src="F?idPersona=<%=arte[8]%>" style="width:100%;" alt="">
+                    </td>
+                </tr>
+                <tr>
+                    <th>País</th><th>Estado</th>
+                </tr>
+                <tr>
+                    <td><%=persona[9]%></td><td><%=persona[7]%></td>
+                </tr>
+                <tr>
+                    <th colspan="2">Contacto</th>
+                </tr>
+                <tr>
+                    <td colspan="2"><%=persona[5]%></td>
+                </tr>
+                <tr>
+                    <th colspan="3">Descripción</th>
+                </tr>
+                <tr>
+                    <td colspan="3"><%=arte[5]%></td>
+                </tr>
+                <tr>
+                    <th>Costo (MN)</th>
+                    <th>Categoría</th>
+                    <th>Tiempo (Horas)</th>
+                </tr>
+                <tr>
+                    <td><%=arte[2]%></td>
+                    <td><%=arte[6]%></td>
+                    <td><%=arte[3]%></td>
+                </tr>
+            </table>
+
+            <br><br>
+
+            <table>
+                <tr>
+                    <td id="like">
+                        <div id="Jlike">
+                            <h1>
+                                <%if(Funcion.existeLike(idArte, id) == true){%>
+                                    <i class="fa fa-thumbs-up"></i>
+                                <%}else{%>
+                                    <i class="fa fa-thumbs-o-up"></i>
+                                <%}%>
+                            <br><%=likes[0]%>
+                            </h1>
+                        </div>
+                    </td>
+                    <td id="fav">
+                        <div id="Jfav">
+                            <h1>
+                                <%if(Funcion.existeFav(idArte, id) == true){%>
+                                    <i class="fa fa-star"></i>
+                                <%}else{%>
+                                    <i class="fa fa-star-o"></i>
+                                <%}%>
+                            </h1>
+                        </div>
+                    </td>
+                    <td id="dislike">
+                        <div id="Jdislike">
+                            <h1>
+                                <%if(Funcion.existeDislike(idArte, id) == true){%>
+                                    <i class="fa fa-thumbs-down"></i>
+                                <%}else{%>
+                                    <i class="fa fa-thumbs-o-down"></i>
+                                <%}%>
+                            <br><%=likes[1]%>
+                            </h1>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <form>
+                <input type="hidden" id="idPersona" value="<%=id%>"/>
+                <input type="hidden" id="idArte" value="<%=idArte%>"/>
+            </form>
+            
+            <br><br>
+
+            <form action="categoria.jsp" method="post">
+                <input type="hidden" name="idCategoria" value="<%=arte[7]%>">
+                <button class="btn btn-primary btn-lg" onclick="submit();">Ver Categoría</button>
+            </form>
+
+            <br><br>
+            
+            <h1>Comentarios</h1>
+
+            <div id="Jcomentario">
+                <%
+                    ArrayList<String> comentarios = Funcion.verComentarios(idArte);
+                    out.println("<table>");
+                    for (int i = 0; i < comentarios.size(); i=i+4) {
+                        out.println("<tr><th colspan=\"2\">"+comentarios.get(i+2)+"</th></tr>");
+                        String[] datos = Funcion.verDatosId(comentarios.get(i+1));
+                        out.println("<tr><td>"+datos[0]+ " " + datos[1] + " " +  datos[2]+"</td><td>"+comentarios.get(i+3)+"</td></tr><tr><td></td></tr>");
+                    }
+                    out.println("</table>");
+                %>
+            </div>
+            
+            <form>
+                <textarea id="comentario" rows="5" cols="80"></textarea>
+            </form>
+            <button id="botonComentario" class="btn btn-primary btn-lg">Agregar Comentario</button>
         </script>
 
     </head>

@@ -59,6 +59,21 @@ public class Funciones
         return categorias;
     }
     
+    public ArrayList<String> verComentarios(String idArte) throws SQLException{
+        query="call verComentarios("+idArte+");";
+        ArrayList<String> comentario = new ArrayList<>();
+        DB.conectar();
+        resultados = DB.consulta(query);
+        while (resultados.next()) {
+            comentario.add(resultados.getString("idComentario"));
+            comentario.add(resultados.getString("idComentador"));
+            comentario.add(resultados.getString("comentario"));
+            comentario.add(resultados.getString("fecha"));
+        }
+        DB.cierraConexion();
+        return comentario;
+    }
+    
     public String verNombreCategoria(String idCategoria) throws SQLException{
         query="select categoria from catCategorias where idCategoria="+idCategoria+";";
         String categoria="";
