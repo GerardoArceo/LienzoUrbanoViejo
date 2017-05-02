@@ -22,8 +22,8 @@ public class Registro extends HttpServlet
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         String nombre = request.getParameter("usuario");
-        String aPaterno = request.getParameter("usuario");
-        String aMaterno = request.getParameter("usuario");
+        String aPaterno = request.getParameter("aPaterno");
+        String aMaterno = request.getParameter("aMaterno");
         String idEstado = request.getParameter("ciudad");
         String usuario = request.getParameter("usuario");
         String pass = request.getParameter("pass");
